@@ -1,0 +1,72 @@
+""" Alice is working on a data analysis task and wants to process a matrix of integers. She needs to calculate the product of all elements in rows that consist only of even numbers. If no such rows exist, a specific message should be displayed. 
+
+
+
+Help Alice write a program to perform this task using a pass statement.
+
+
+
+Example:
+
+Input: 
+
+3
+
+2 4 
+
+1 3
+
+6 8
+
+
+
+Output: 
+
+384
+
+
+
+Explanation:
+
+Row 1: [2, 4] contains only even numbers. Product = 2 * 4 = 8.
+
+Row 2: [1, 3] contains odd numbers. Skipped using the pass.
+
+Row 3: [6, 8] contains only even numbers. Product = 6 * 8 = 48.
+
+Final Product = 8 * 48 = 384.
+
+Input format :
+The first line of input consists of an integer row, representing the number of rows in the matrix.
+
+The next row lines consist of space-separated integers, representing the elements of each row in the matrix.
+
+Output format :
+If at least one row contains only even numbers, the program prints the product of all elements in such rows.
+
+If no rows with only even numbers are found, the program prints the message: No rows with only even numbers found.
+
+"""
+
+
+rows = int(input())
+matrix = []
+for _ in range(rows):
+    row = list(map(int, input().split()))
+    matrix.append(row)
+final_product = 1
+for row in matrix:
+    has_odd = False
+    for num in row:
+        if num % 2 != 0:
+            has_odd = True
+            pass  
+            break
+    if not has_odd:
+        for num in row:
+            final_product *= num
+
+if final_product == 1:  
+    print("No rows with only even numbers found.")
+else:
+    print(final_product)
